@@ -1,0 +1,15 @@
+<ion-view>
+    <ion-header-bar align-title="center" >    
+        <h1 class="title">You</h1>    
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <a class="item item-avatar" href="#" ng-repeat="a in activity">
+                <img src="{{ a.profileImageSmall }}">
+                <h2>{{ a.username }}</h2>
+                <p ng-if="a.type == 'liked'">liked your photo</p>
+                <p ng-if="a.type == 'commented'">commented: {{ a.comment }}</p>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

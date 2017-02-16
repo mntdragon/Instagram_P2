@@ -1,0 +1,48 @@
+<ion-view>
+    <ion-header-bar align-title="center" >
+    
+    <h1 class="title">dtrump</h1>
+    
+    </ion-header-bar>
+    <ion-content>
+        <div class="row">
+            <div class="col col-25">
+                <img class="profileImage" ng-src="{{ userData.profileImageSmall }}">
+            </div>
+            <div class="col">
+                <div class="row" style="text-align: center;">
+                    <div class="col">{{ userData.postCount }}<br>posts</div>
+                    <div class="col">{{ userData.followers }}<br> follwers</div>
+                    <div class="col">{{ userData.following }}<br> following</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="button button-full button-small button-calm">
+                            Edit profile
+                        </button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="imageHolder">
+            <div class="imageFrameThree" ng-repeat="p in posts">
+                <img ng-src="{{ p.imageThumbnail }}" ng-click="browseDetail(p.id)">
+            </div>     
+
+            <!-- placeholders -->       
+            <div class="imageFrameThree">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Dundus_Square.jpg">
+            </div>
+            <div class="imageFrameThree">
+                <img src="https://www.nycgovparks.org/photo_gallery/full_size/14413.jpg">
+            </div>
+            <div class="imageFrameThree">
+                <img src="https://www.nycgovparks.org/photo_gallery/full_size/14413.jpg">
+            </div>
+            <div class="imageFrameThree">
+                <img src="https://www.nycgovparks.org/photo_gallery/full_size/14413.jpg">
+            </div>
+        </div>
+    
+    </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view>
+    <ion-header-bar align-title="left" >
+        <div class="buttons" >
+            <button class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></button>
+        </div>        
+        <label class="item-input-wrapper">
+          <input type="search" placeholder="Search" class="headerInput" ng-model="input.searchText" ng-change="updateSearch()">
+        </label>
+        <button class="button button-icon ion-ios-close-empty" ng-click="emptySearch()"></button>
+    </ion-header-bar>
+    <ion-content class="has-tabs">
+        <div class="tabs tabs-top custom-tabs-top">
+            <a class="tab-item" ng-class="{active: tabs.people == true }" ng-click="tabActivate('people')">
+                People
+            </a>
+            <a class="tab-item" ng-class="{active: tabs.tags == true }" ng-click="tabActivate('tags')">
+                Tags
+            </a>  
+        </div>
+        <div ng-if="tabs.people">
+            <div class="list">
+                <a class="item item-avatar" href="#" ng-repeat="p in searchResults.people">
+                <img src="{{ p.profileImageSmall }}">
+                <h2>{{ p.username }}</h2>
+                <p>{{ p.fullName }}</p>
+                </a>
+
+            </div>
+        </div>
+        <div ng-if="tabs.tags">
+            <div class="list">
+                <a class="item item-avatar" href="#">
+                <i class="icon ion-pound"></i>
+                <h2>#tupac</h2>
+                <p>87,345 posts</p>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

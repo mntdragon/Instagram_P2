@@ -1,0 +1,24 @@
+<ion-header-bar align-title="center" >
+    <div class="buttons" >
+        <button class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></button>
+    </div>   
+    <h1 class="title">Comments</h1>         
+</ion-header-bar>
+<ion-content>
+    <div class="list">
+    <a class="item item-avatar" href="#" collection-repeat="c in comments">
+      <img ng-src="{{ c.user.profileImageSmall }}">
+      <h2>{{ c.user.username }}</h2>
+      <p>{{c.text}}</p>
+    </a>    
+    </div>
+</ion-content>
+<ion-footer-bar align-title="left" class="bar-light">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-redo-outline placeholder-icon"></i>
+    <input type="search" class="headerInput" placeholder="Add a comment..." ng-model="comment.text">
+  </label>
+  <div class="buttons" ng-click="addComment()">
+    <button class="button">Post</button>
+  </div>
+</ion-footer-bar>
