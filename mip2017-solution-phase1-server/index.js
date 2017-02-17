@@ -7,7 +7,10 @@ var app = express();
 app.set('port', (process.env.PORT || 8200));
 
 // bodyParser needs to be configured for parsing JSON from HTTP body
+
+// receive input from client
 app.use(bodyParser.json());
+
 app.use(cors());
 
 // Home loading
@@ -19,20 +22,21 @@ var posts = [
             user: {
                 id: 1,
                 username: "jasonstatham",
-                profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/jason.jpg" 
-            },                                                 
+                profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/jason.jpg"
+            },
             image: "http://www.students.oamk.fi/~t5homi00/images/jason1.jpg",
             imageThumbnail: "http://www.students.oamk.fi/~t5homi00/images/jason1.jpg",
-            likes: 892, 
+            likes: 892,
             caption: "Prepare for my new movies!",
-            tags: ['mechanics'],         
+            tags: ['mechanics'],
             comments: [
                 {
                     id: 0,
                     user: {
                         id: 2,
-                        username: "selenagomez"
-                    },                    
+                        username: "selenagomez",
+                        profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/selena.jpg"
+                    },
                     comment: "I am really hyped for that! #newStatham",
                     userRefs: [],
                     tags: ["newStatham"]
@@ -41,11 +45,12 @@ var posts = [
                     id: 1,
                     user: {
                         id: 3,
-                        username: "edsheeran"
-                    },                    
+                        username: "edsheeran",
+                        profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/edsheeran.jpg"
+                    },
                     comment: "Me too @selenagomez",
                     userRefs: ["selenagomez"],
-                    tags: []       
+                    tags: []
                 },
             ]
 
@@ -88,7 +93,7 @@ var activeUsers = [
         followers: 55,
         following: 23,
         activity: []
-    }   
+    }
 ];
 
 app.get('/', function(req, res) {
@@ -98,15 +103,43 @@ app.get('/', function(req, res) {
 app.post('/', function(req,res) {
     res.send("Hello!");
 });
+
+app.post('/signup', function(req,res){
+
+    var user = activeUsers.push(
+    	{
+            id: "1",
+            username: req.body.username,
+            name: req.body.name,
+            password: req.body.password,
+            profileImageSmall: 0,
+            postCount: 0,
+            followers: 0,
+            following: 0,
+            activity: 0
+        }
+    	);
+      console.log(req.body);
+
+    if(user !== undefined)
+    {
+        return res.sendStatus(200);
+    }
+    else
+    {
+        return res.sendStatus(401);
+    }
+})
+
 app.post('/login', function(req,res){
     console.log("test");
     console.log(req.body);
 
 
-    
+
     var u = activeUsers.find(function(element){
 
-        return (element.username === req.body.username) && (element.password === req.body.password);        
+        return (element.username === req.body.username) && (element.password === req.body.password);
     });
 
     if(u !== undefined)
@@ -131,7 +164,7 @@ app.get('/posts/relevant', function(req, res) {
     res.json(posts);
 });
 
-app.get('/posts/:id', function(req, res) {    
+app.get('/posts/:id', function(req, res) {
     res.json(posts[req.params.id]);
 });
 
@@ -148,20 +181,20 @@ app.get('/posts', function (req, res) {
 
 // Account Connection
 
-var getActiveUser = function()
-{
-    return activeUsers;
-}
+// var getActiveUser = function()
+// {
+//     return activeUsers;
+// }
 
-app.get('/account', function(req, res){
-    res.json ( getActiveUser() );
-})
+// app.get('/account', function(req, res){
+//     res.json ( getActiveUser() );
+// })
 
 
 
 
 // End of Home Connection
-app.listen(8200, function() {
+app.listen(8200 || process.env.PORT, function() {
         console.log('Node app is running ');
 });
 
@@ -172,5 +205,3 @@ app.listen(8200, function() {
 // app.listen(app.get('port'), function() {
 //     console.log('Node app is running on port', app.get('port'));
 // });
-
-

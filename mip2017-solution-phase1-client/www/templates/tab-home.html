@@ -28,8 +28,8 @@
                 <a ng-if="post.comments.length > 4" class="postTotalCommentIndicator" ng-click="comment(post)">
                     View all {{ post.comments.length }} comments
                 </a>
-                <p ng-repeat="c in post.comments | limitTo:4">
-                    <b>{{c.user.username}}</b> {{c.text}}
+                <p ng-repeat="c in post.comments | limitTo:3">
+                    <b>{{c.user.username}}</b> {{c.comment}}
                 </p>
             </div>
             </div>        

@@ -27,7 +27,7 @@ angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.servic
 
 
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {  
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
   $ionicConfigProvider.tabs.position("bottom");
   // Ionic uses AngularUI Router which uses the concept of states
@@ -41,11 +41,9 @@ angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.servic
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html',
-    resolve: {
-        islogged: function(User){
-            return User.isLogged();
-        }
-    }
+    resolve: {isLogged: function (Users) {
+      return Users.islogged;
+    }}
   })
 
   // Each tab has its own nav history stack:
@@ -88,7 +86,7 @@ angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.servic
           controller: 'SearchCtrl'
       }
     }
-  })  
+  })
 
   .state('tab.activity', {
     url: '/activity',
@@ -113,7 +111,7 @@ angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.servic
   .state('post', {
     url: '/post',
     templateUrl: 'templates/post.html',
-    controller: 'PostCtrl'    
+    controller: 'PostCtrl'
   })
 
   .state('post-confirm', {
@@ -124,21 +122,26 @@ angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.servic
         imageUri: null
     }
   })
-  
+
   .state('comment', {
     url: '/comment/:postId',
     templateUrl: 'templates/comment-post.html',
-    controller: 'PostCommentCtrl'    
+    controller: 'PostCommentCtrl'
   })
 
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl'    
+    controller: 'LoginCtrl'
+  })
+
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'SignupCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
 });
-

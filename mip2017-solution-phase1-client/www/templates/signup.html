@@ -1,0 +1,21 @@
+<div class="list">
+  <label class="item item-input">
+    <span class="input-label">Username</span>
+    <input type="text" ng-model="user.username">
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Displayname</span>
+    <input type="text" ng-model="user.name">
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Password</span>
+    <input type="password" ng-model="user.password">
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Confirm Password</span>
+    <input type="password" ng-model="user.confirmpassword">
+  </label>
+</div>
+<button class="button button-block button-positive" ng-click="signup()">
+    Sign up
+</button>
