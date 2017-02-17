@@ -80,13 +80,13 @@ var otherUsers = [
 var activeUsers = [
     {
         id:"a9dm85",
-        username: "thangho",
+        username: "jasonstatham",
         password: "123456",
         name: "Jason Statham",
         profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/jason.jpg",
-        postCount: "13",
-        followers: "55",
-        following: "23",
+        postCount: 13,
+        followers: 55,
+        following: 23,
         activity: []
     }   
 ];
@@ -154,7 +154,7 @@ var getActiveUser = function()
 }
 
 app.get('/account', function(req, res){
-    res.json ( getUserPosts() );
+    res.json ( getActiveUser() );
 })
 
 

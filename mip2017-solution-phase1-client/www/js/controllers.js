@@ -1,6 +1,6 @@
 angular.module('someklone.controllers', [])
 
-.controller('HomeCtrl', function($scope, $state, Posts) {
+.controller('HomeCtrl', function($scope, $state, Posts, $q) {
     Posts.following().then(function(data)
         {
             $scope.posts = data;
@@ -204,8 +204,15 @@ angular.module('someklone.controllers', [])
     $scope.activity = Users.getActiveUserActivity();
 })
 
-.controller('AccountCtrl', function($scope, Users, Posts) {
+.controller('AccountCtrl', function($scope, Users, Posts, $q) {
     $scope.userData = Users.getActiveUser();
+    console.log($scope.userData);
+
+    // Users.getActiveUser().then(function(data)
+    //     {
+    //         $scope.userData = data;
+    //     }
+    // );
 
     Posts.getUserPosts($scope.userData.id).then(function(results){
         $scope.posts = results;

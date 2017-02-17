@@ -12,11 +12,11 @@ var activeUser = [];
             activeUser = { id: result.data.id, 
                            username: result.data.username,
                            name: result.data.name,
-                           profileImagaSmall: result.profileImageSmall,
-                           postCount: result.postCount,
-                           followers: result.followers,
-                           following: result.following,
-                           activity: result.activity
+                           profileImageSmall: result.data.profileImageSmall,
+                           postCount: result.data.postCount,
+                           followers: result.data.followers,
+                           following: result.data.following,
+                           activity: result.data.activity,
 
           };
             resolve();
