@@ -1,4 +1,92 @@
-angular.module('someklone.services').factory('Users', function($q) {
+angular.module('someklone.services').factory('Users', function($q, $http, appConfig, $state, $ionicPopup, $ionicHistory) {
+
+
+var activeUser = [];
+
+  return {
+    login: function(username, password) {
+      return $q(function(resolve, reject){
+        $http.post(appConfig.apiAddr + "login", { username: username, password: password}).then(function(result){
+          if(result.status == 200)
+          {
+            activeUser = { id: result.data.id, 
+                           username: result.data.username,
+                           name: result.data.name,
+                           profileImagaSmall: result.profileImageSmall,
+                           postCount: result.postCount,
+                           followers: result.followers,
+                           following: result.following,
+                           activity: result.activity
+
+          };
+            resolve();
+          }
+          else
+          {
+            reject();
+          }
+        }).catch(function(){
+          reject();
+        });
+      });
+    },
+    isLogged: function()
+    {
+      return $q(function(resolve, reject){
+        if(activeUser != null)
+        {
+          resolve();
+        }
+        else
+        {
+          reject();
+        }
+      });
+    },
+    searchUser: function(searchWord) {
+            
+            var upperCaseSearchWord = searchWord.toUpperCase();
+            return $q(function(resolve, reject){
+                if(searchWord.length > 0)
+                {
+                    var matches = users.filter(function(u){
+                        var testString = u.username.toUpperCase();                        
+                        return testString.includes(upperCaseSearchWord);                    
+                    });
+
+                    resolve(matches);
+                }
+                else
+                {
+                    reject();
+                }
+            });            
+        },
+        getOne: function(key)
+        {
+            return $q(function(resolve, reject){
+                for(var i = 0; i < users.length; i++)
+                {
+                    if(users[i].id == key)
+                    {
+                        resolve(users[i]);
+                    }
+                }
+                reject();
+                
+            });
+        },
+        getActiveUser: function()
+        {
+            return activeUser;
+        },
+        getActiveUserActivity: function()
+        {
+            return activeUser.activity;
+        }
+
+  };
+
 
     // var activeUser = {
     //         id: 1,
@@ -53,87 +141,91 @@ angular.module('someklone.services').factory('Users', function($q) {
     //     }
     // ];
 
-    return {
-        searchUser: function(searchWord) {
+    // return {
+    //     searchUser: function(searchWord) {
             
-            var upperCaseSearchWord = searchWord.toUpperCase();
-            return $q(function(resolve, reject){
-                if(searchWord.length > 0)
-                {
-                    var matches = users.filter(function(u){
-                        var testString = u.username.toUpperCase();                        
-                        return testString.includes(upperCaseSearchWord);                    
-                    });
+    //         var upperCaseSearchWord = searchWord.toUpperCase();
+    //         return $q(function(resolve, reject){
+    //             if(searchWord.length > 0)
+    //             {
+    //                 var matches = users.filter(function(u){
+    //                     var testString = u.username.toUpperCase();                        
+    //                     return testString.includes(upperCaseSearchWord);                    
+    //                 });
 
-                    resolve(matches);
-                }
-                else
-                {
-                    reject();
-                }
-            });            
-        },
-        getOne: function(key)
-        {
-            return $q(function(resolve, reject){
-                for(var i = 0; i < users.length; i++)
-                {
-                    if(users[i].id == key)
-                    {
-                        resolve(users[i]);
-                    }
-                }
-                reject();
+    //                 resolve(matches);
+    //             }
+    //             else
+    //             {
+    //                 reject();
+    //             }
+    //         });            
+    //     },
+    //     getOne: function(key)
+    //     {
+    //         return $q(function(resolve, reject){
+    //             for(var i = 0; i < users.length; i++)
+    //             {
+    //                 if(users[i].id == key)
+    //                 {
+    //                     resolve(users[i]);
+    //                 }
+    //             }
+    //             reject();
                 
-            });
-        },
-        getActiveUser: function()
-        {
-            return activeUser;
-        },
-        getActiveUserActivity: function()
-        {
-            return activeUser.activity;
-        }
+    //         });
+    //     },
+    //     getActiveUser: function()
+    //     {
+    //         return activeUser;
+    //     },
+    //     getActiveUserActivity: function()
+    //     {
+    //         return activeUser.activity;
+    //     }
 
-    };
+    // };
 })
 
 // This is the login part
-.factory('User', function($q, $http, appConfig) {
+// .factory('User', function($q, $http, appConfig) {
   
-  var user = null;
+//   var user = null;
 
-  return {
-    login: function(username, password) {
-      return $q(function(resolve, reject){
-        $http.post(appConfig.apiAddr + "login", { username: username, password: password}).then(function(result){
-          if(result.status == 200)
-          {
-            user = { id: result.data.id, username: result.data.username };
-            resolve();
-          }
-          else
-          {
-            reject();
-          }
-        }).catch(function(){
-          reject();
-        });
-      });
-    },
-    isLogged: function()
-    {
-      return $q(function(resolve, reject){
-        if(user != null)
-        {
-          resolve();
-        }
-        else
-        {
-          reject();
-        }
-      });
-    }    
-  };
-});
+//   return {
+//     login: function(username, password) {
+//       return $q(function(resolve, reject){
+//         $http.post(appConfig.apiAddr + "login", { username: username, password: password}).then(function(result){
+//           if(result.status == 200)
+//           {
+//             user = { id: result.data.id, username: result.data.username };
+//             resolve();
+//           }
+//           else
+//           {
+//             reject();
+//           }
+//         }).catch(function(){
+//           reject();
+//         });
+//       });
+//     },
+//     isLogged: function()
+//     {
+//       return $q(function(resolve, reject){
+//         if(user != null)
+//         {
+//           resolve();
+//         }
+//         else
+//         {
+//           reject();
+//         }
+//       });
+//     }    
+//   };
+
+
+  
+// });
+

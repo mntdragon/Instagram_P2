@@ -236,7 +236,7 @@ angular.module('someklone.controllers', [])
     }
 })
 
-.controller('LoginCtrl', function($scope, User, $ionicPopup, $ionicHistory, $state) {
+.controller('LoginCtrl', function($scope, Users, $ionicPopup, $ionicHistory, $state) {
     $scope.user = {
         username: "",
         password: ""
@@ -244,7 +244,7 @@ angular.module('someklone.controllers', [])
 
     $scope.login = function()
      {
-    User.login($scope.user.username, $scope.user.password).then(function(){
+    Users.login($scope.user.username, $scope.user.password).then(function(){
       $ionicHistory.nextViewOptions({        
         disableBack: true
       });

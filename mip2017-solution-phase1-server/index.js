@@ -77,13 +77,17 @@ var otherUsers = [
 ]
 
 // Here is the database about username, password, profileImage, and name
-var users = [
+var activeUsers = [
     {
         id:"a9dm85",
         username: "thangho",
         password: "123456",
         name: "Jason Statham",
-        profileimageSmall: "http://www.students.oamk.fi/~t5homi00/images/jason.jpg",
+        profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/jason.jpg",
+        postCount: "13",
+        followers: "55",
+        following: "23",
+        activity: []
     }   
 ];
 
@@ -100,14 +104,22 @@ app.post('/login', function(req,res){
 
 
     
-    var u = users.find(function(element){
+    var u = activeUsers.find(function(element){
 
         return (element.username === req.body.username) && (element.password === req.body.password);        
     });
 
     if(u !== undefined)
     {
-        return res.json({id: u.id, username: u.username});
+        return res.json({id: u.id,
+                         username: u.username,
+                         name: u.name,
+                         profileImageSmall: u.profileImageSmall,
+                         postCount: u.postCount,
+                         followers: u.followers,
+                         following: u.following,
+                         activity: u.activity
+        });
     }
     else
     {
@@ -133,6 +145,17 @@ var following = function()
 app.get('/posts', function (req, res) {
     res.json ( following() );
 });
+
+// Account Connection
+
+var getActiveUser = function()
+{
+    return activeUsers;
+}
+
+app.get('/account', function(req, res){
+    res.json ( getUserPosts() );
+})
 
 
 
