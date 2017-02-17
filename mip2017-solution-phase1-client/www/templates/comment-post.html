@@ -9,14 +9,14 @@
     <a class="item item-avatar" href="#" collection-repeat="c in comments">
       <img ng-src="{{ c.user.profileImageSmall }}">
       <h2>{{ c.user.username }}</h2>
-      <p>{{c.text}}</p>
+      <p>{{c.comment}}</p>
     </a>    
     </div>
 </ion-content>
 <ion-footer-bar align-title="left" class="bar-light">
   <label class="item-input-wrapper">
     <i class="icon ion-ios-redo-outline placeholder-icon"></i>
-    <input type="search" class="headerInput" placeholder="Add a comment..." ng-model="comment.text">
+    <input type="search" class="headerInput" placeholder="Add a comment..." ng-model="comment">
   </label>
   <div class="buttons" ng-click="addComment()">
     <button class="button">Post</button>

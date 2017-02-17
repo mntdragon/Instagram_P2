@@ -40,7 +40,10 @@ angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.servic
   .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    resolve: {isLogged: function (Users) {
+      return Users.islogged;
+    }}
   })
 
   // Each tab has its own nav history stack:

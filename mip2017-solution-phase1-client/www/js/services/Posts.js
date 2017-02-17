@@ -1,7 +1,9 @@
 
-angular.module('someklone.services').factory('Posts', function($q, $http, appConfig) {
+angular.module('someklone.services').factory('Posts', function($q, $http, appConfig, Users) {
 
     var posts = [];
+    var userData = Users.getActiveUser();
+    
 
     return {
         // posts from myself and the from the users i am following
@@ -103,11 +105,11 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                     post.comments.push({
                         id: post.comments.length,
                         user: {
-                            id: 1,
-                            username: "HillaryC",
-                            profileImageSmall: "https://pbs.twimg.com/profile_images/750300510264107008/G8-PA5KA.jpg"
+                            id: userData.id,
+                            username: userData.username,
+                            profileImageSmall: userData.profileImageSmall
                         },                    
-                        text: comment,
+                        comment: comment,
                         userRefs: [],
                         tags: []  
                     });

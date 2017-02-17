@@ -233,12 +233,13 @@ angular.module('someklone.controllers', [])
         });
         $state.go('tab.home');
     };
-
+    
     $scope.addComment = function()
     {
-        Posts.addCommentToPost($stateParams.postId, $scope.comment.text).then(function(){
+        Posts.addCommentToPost($stateParams.postId, $scope.comment).then(function(){
             $ionicScrollDelegate.scrollBottom(true);
-            $scope.comment.text = "";
+            $scope.comment = "";
+            console.log($scope.comment);
         });
     }
 })

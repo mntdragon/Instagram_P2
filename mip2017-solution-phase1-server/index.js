@@ -31,7 +31,8 @@ var posts = [
                     id: 0,
                     user: {
                         id: 2,
-                        username: "selenagomez"
+                        username: "selenagomez",
+                        profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/selena.jpg"
                     },                    
                     comment: "I am really hyped for that! #newStatham",
                     userRefs: [],
@@ -41,7 +42,8 @@ var posts = [
                     id: 1,
                     user: {
                         id: 3,
-                        username: "edsheeran"
+                        username: "edsheeran",
+                        profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/edsheeran.jpg"
                     },                    
                     comment: "Me too @selenagomez",
                     userRefs: ["selenagomez"],
@@ -148,14 +150,14 @@ app.get('/posts', function (req, res) {
 
 // Account Connection
 
-var getActiveUser = function()
-{
-    return activeUsers;
-}
+// var getActiveUser = function()
+// {
+//     return activeUsers;
+// }
 
-app.get('/account', function(req, res){
-    res.json ( getActiveUser() );
-})
+// app.get('/account', function(req, res){
+//     res.json ( getActiveUser() );
+// })
 
 
 
