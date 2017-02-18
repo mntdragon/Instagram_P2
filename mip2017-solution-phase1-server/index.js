@@ -36,7 +36,11 @@ var posts = [
                         id: 2,
                         username: "selenagomez",
                         profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/selena.jpg"
+<<<<<<< HEAD
                     },
+=======
+                    },                    
+>>>>>>> master
                     comment: "I am really hyped for that! #newStatham",
                     userRefs: [],
                     tags: ["newStatham"]
@@ -47,7 +51,11 @@ var posts = [
                         id: 3,
                         username: "edsheeran",
                         profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/edsheeran.jpg"
+<<<<<<< HEAD
                     },
+=======
+                    },                    
+>>>>>>> master
                     comment: "Me too @selenagomez",
                     userRefs: ["selenagomez"],
                     tags: []

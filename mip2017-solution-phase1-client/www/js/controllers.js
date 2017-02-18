@@ -233,7 +233,7 @@ angular.module('someklone.controllers', [])
         });
         $state.go('tab.home');
     };
-
+    
     $scope.addComment = function()
     {
         Posts.addCommentToPost($stateParams.postId, $scope.comment).then(function(){
