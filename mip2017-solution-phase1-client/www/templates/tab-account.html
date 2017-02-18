@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view cache-view="false">
     <ion-header-bar align-title="center" >
 
     <h1 class="title">{{userData.name}}</h1>
@@ -28,6 +28,11 @@
             <div class="imageFrameThree" ng-repeat="p in posts">
                 <img ng-src="{{ p.imageThumbnail }}" ng-click="browseDetail(p.id)">
             </div>
+        </div>
+        <a class="button button-block button-assertive" href = "#/login">
+            Sign out
+        </a>
+
 
 
 

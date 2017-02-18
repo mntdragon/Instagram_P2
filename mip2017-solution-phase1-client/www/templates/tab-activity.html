@@ -1,6 +1,6 @@
 <ion-view>
-    <ion-header-bar align-title="center" >    
-        <h1 class="title">You</h1>    
+    <ion-header-bar align-title="center" >
+        <h1 class="title">You</h1>
     </ion-header-bar>
     <ion-content class="padding">
         <div class="list">
@@ -10,6 +10,16 @@
                 <p ng-if="a.type == 'liked'">liked your photo</p>
                 <p ng-if="a.type == 'commented'">commented: {{ a.comment }}</p>
             </a>
+        </div>
+        <div class="list">
+          <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="tag" ng-model="tag.name">
+            </label>
+            <button class="button button-small" ng-click="searchByTag(tag.name)">
+              search
+            </button>
+          </div>
         </div>
     </ion-content>
 </ion-view>

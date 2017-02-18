@@ -200,23 +200,28 @@ angular.module('someklone.controllers', [])
     };
 })
 
-.controller('ActivityCtrl', function($scope, Users) {
+.controller('ActivityCtrl', function($scope, Users, Posts) {
     $scope.activity = Users.getActiveUserActivity();
+    $scope.tag =  {
+                    name : ""
+                  };
+                  //
+    $scope.searchByTag = function(){
+
+      Posts.searchTag( $scope.tag.name );
+    };
+
 })
 
-.controller('AccountCtrl', function($scope, Users, Posts, $q) {
+.controller('AccountCtrl', function($scope, Users, Posts, $q, $state, $ionicHistory) {
+
     $scope.userData = Users.getActiveUser();
     console.log($scope.userData);
-
-    // Users.getActiveUser().then(function(data)
-    //     {
-    //         $scope.userData = data;
-    //     }
-    // );
 
     Posts.getUserPosts($scope.userData.id).then(function(results){
         $scope.posts = results;
     });
+
 })
 
 .controller('PostCommentCtrl', function($scope, $stateParams, Users, Posts, $ionicScrollDelegate, $ionicHistory, $state) {

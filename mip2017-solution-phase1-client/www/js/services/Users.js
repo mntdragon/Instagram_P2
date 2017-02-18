@@ -1,7 +1,7 @@
 angular.module('someklone.services').factory('Users', function($q, $http, appConfig, $state, $ionicPopup, $ionicHistory) {
 
 
-var activeUser = [];
+var activeUser = {};
 
   return {
     login: function(username, password) {
@@ -45,6 +45,18 @@ var activeUser = [];
         }).catch(function(){
           reject();
         });
+      });
+    },
+    signout: function() {
+      return $q(function(resolve, reject){
+        if(activeUser != null)
+        {
+          resolve();
+        }
+        else
+        {
+          reject();
+        }
       });
     },
     isLogged: function()

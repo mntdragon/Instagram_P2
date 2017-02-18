@@ -19,6 +19,7 @@ app.use(cors());
 var posts = [
         {
             id: 0,
+            name: "alo",
             user: {
                 id: 1,
                 username: "jasonstatham",
@@ -28,7 +29,8 @@ var posts = [
             imageThumbnail: "http://www.students.oamk.fi/~t5homi00/images/jason1.jpg",
             likes: 892,
             caption: "Prepare for my new movies!",
-            tags: ['mechanics'],
+            tags: { name: "#thang"},
+
             comments: [
                 {
                     id: 0,
@@ -54,6 +56,14 @@ var posts = [
                 },
             ]
 
+        },
+        {
+            id: 2,
+            tags: { name: "#hehe"}
+        },
+        {
+            id: 3,
+            tags: { name : "#bobo"}
         }
     ]
 
@@ -168,6 +178,23 @@ app.get('/posts/:id', function(req, res) {
     res.json(posts[req.params.id]);
 });
 
+app.post('/posts/tag', function(req,res){
+
+
+
+    getpost = function()
+    {
+        return posts.filter(function(post){
+            if(post.name === req.body.name)
+            {
+                return post;
+            }
+          })
+  }
+
+    res.json( getpost() );
+});
+
 
 // Home Connection
 var following = function()
@@ -194,7 +221,7 @@ app.get('/posts', function (req, res) {
 
 
 // End of Home Connection
-app.listen(8200 || process.env.PORT, function() {
+app.listen(app.get('port'), function() {
         console.log('Node app is running ');
 });
 
