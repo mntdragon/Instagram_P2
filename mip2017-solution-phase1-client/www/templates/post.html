@@ -1,0 +1,33 @@
+<ion-header-bar align-title="left" >
+    <div class="buttons" >
+        <button class="button button-icon ion-ios-close-empty" ng-click="goBack()">  Photo</button>
+    </div>   
+    <h1 class="title"></h1>
+    <div class="buttons">
+        <button class="button" ng-click="confimPost()" ng-if="imageData.picture != null">Next</button>
+    </div>         
+</ion-header-bar>
+<ion-content class="has-tabs">
+    <div ng-if="tabs.gallery">
+        <div>
+            <img class="maxWidth" ng-src="{{imageData.picture}}">
+        </div>
+        <div class="imageHolder">
+            <div class="imageFrameFour" collection-repeat="photo in imageData.gallery.photos" item-width="100" item-height="100">
+                <img src="file://{{ photo.thumbnail }}" ng-click="selectGalleryImage(photo)">
+            </div>            
+        </div>        
+    </div>
+    <div ng-if="tabs.photo">
+        <img class="maxWidth" ng-src="{{imageData.picture}}">        
+    </div>
+</ion-content>
+<div class="tabs tabs-light">
+    <a class="tab-item" ng-class="{active: tabs.gallery == true }" ng-click="gallery()">
+        Gallery
+    </a>
+    <a class="tab-item" ng-class="{active: tabs.photo == true }" ng-click="photo()">
+        Photo
+    </a>  
+</div>
+

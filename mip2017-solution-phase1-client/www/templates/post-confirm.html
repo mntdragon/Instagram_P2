@@ -1,0 +1,19 @@
+<ion-header-bar align-title="center" >
+    <div class="buttons" >
+        <button class="button button-icon ion-ios-close-empty" ng-click="goBack()">  Photo</button>
+    </div>   
+    <h1 class="title">New post</h1>
+    <div class="buttons">
+        <button class="button" ng-click="sharePost()">Share</button>
+    </div>         
+</ion-header-bar>
+<ion-content>
+    <div>
+        <img style="height: 200px;" ng-src="{{ post.imageUri }}">
+    </div>
+    <div>
+        <label class="item item-input">
+            <input type="text" placeholder="Write a caption..." ng-model="post.caption">
+        </label>
+    </div>       
+</ion-content>
