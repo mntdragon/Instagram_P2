@@ -29,7 +29,7 @@ var posts = [
             imageThumbnail: "http://www.students.oamk.fi/~t5homi00/images/jason1.jpg",
             likes: 892,
             caption: "Prepare for my new movies!",
-            tags:  "#thang",
+            tags:  ["#thang"],
 
             comments: [
                 {
@@ -85,7 +85,7 @@ var posts = [
             likes: 7665,
             caption: "Are you ready for Passenger ?",
             userRefs: [],
-            tags: "#passenger",
+            tags: ["#passenger"],
             comments: []
         },
         {
@@ -101,7 +101,7 @@ var posts = [
             likes: 1029,
             caption: "Let's come to magic world!!!",
             userRefs: [],
-            tags: "#magic",
+            tags: ["#magic"],
             comments: []
         }
 
@@ -256,15 +256,15 @@ app.post('/posts/tag', function(req,res){
     getpost = function()
     {
         return posts.filter(function(post){
-
-            post.tags.filter(function(p){
-                if(p == req.body.tags) {
-                    return post;
+            console.log(post.tags);
+           if(post.tags.includes(req.body.tags)){
+                
+            return post;
                 }
                 else{
                     console.log("false");
                 }
-            })
+        
             // if(post.tags === req.body.tags)
             // {
             //     return post;
