@@ -2,6 +2,8 @@ angular.module('someklone.services').factory('Users', function($q, $http, appCon
 
 
 var activeUser = {};
+var otherUsers = {};
+
 
   return {
     login: function(username, password) {
@@ -18,7 +20,7 @@ var activeUser = {};
                            following: result.data.following,
                            activity: result.data.activity
                           };
-            console.log(activeUser);
+            
             resolve();
           }
           else
@@ -36,7 +38,7 @@ var activeUser = {};
           if(result.status == 200)
           {
             resolve();
-            console.log(activeUser);
+            
           }
           else
           {
@@ -73,12 +75,19 @@ var activeUser = {};
       });
     },
     searchUser: function(searchWord) {
-
+           return $q(function(resolve, reject){
+                $http.get(appConfig.apiAddr + "search").then(function(response){
+                    otherUsers = response.data;
+                    resolve(otherUsers);
+                },function(err){
+                    reject();
+                });
+            });
             var upperCaseSearchWord = searchWord.toUpperCase();
             return $q(function(resolve, reject){
                 if(searchWord.length > 0)
                 {
-                    var matches = users.filter(function(u){
+                    var matches = otherUsers.filter(function(u){
                         var testString = u.username.toUpperCase();
                         return testString.includes(upperCaseSearchWord);
                     });

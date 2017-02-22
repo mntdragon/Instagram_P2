@@ -19,10 +19,10 @@
         </div>
         <div ng-if="tabs.people">
             <div class="list">
-                <a class="item item-avatar" href="#" ng-repeat="p in searchResults.people">
+                <a class="item item-avatar" href="#" ng-repeat="p in searchResults.people | filter: input.searchText">
                 <img src="{{ p.profileImageSmall }}">
                 <h2>{{ p.username }}</h2>
-                <p>{{ p.fullName }}</p>
+                <p>{{ p.fullname }}</p>
                 </a>
 
             </div>

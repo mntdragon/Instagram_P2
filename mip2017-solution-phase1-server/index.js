@@ -60,7 +60,7 @@ var posts = [
             id: 1,
             name: "post2",
             user: {
-                id: 2,
+                id: 4,
                 username: "jamesmcavoy",
                 profileImageSmall: "https://s-media-cache-ak0.pinimg.com/originals/f3/15/01/f3150106e24a639559d74da095a70b1c.jpg"
             },
@@ -76,7 +76,7 @@ var posts = [
             id: 2,
             name: "post3",
             user: {
-                id: 2,
+                id: 5,
                 username: "jenniferlawrence",
                 profileImageSmall: "http://cliqueimg.com/cache/posts/185560/copy-that-a-jennifer-lawrence-hairstyle-for-every-day-of-the-week-1676154-1456538020.640x0c.jpg"
             },
@@ -92,7 +92,7 @@ var posts = [
             id: 3,
             name: "post4",
             user: {
-                id: 2,
+                id: 6,
                 username: "eddieredmayne",
                 profileImageSmall: "https://s-media-cache-ak0.pinimg.com/originals/fa/3f/69/fa3f691d3fdc13ac0ccc707132730b66.jpg"
             },
@@ -129,7 +129,27 @@ var otherUsers = [
         username: "edsheeran",
         fullname: "Ed Sheeran",
         profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/edsheeran.jpg"
+    },
+    {
+        id: 4,
+        username: "jamesmcavoy",
+        fullname: "James McAvoy",
+        profileImageSmall: "https://s-media-cache-ak0.pinimg.com/originals/f3/15/01/f3150106e24a639559d74da095a70b1c.jpg"
+    },
+    {
+        id: 5,
+        username: "jenniferlawrence",
+        fullname: "Jennifer Lawrence",
+        profileImageSmall: "http://cliqueimg.com/cache/posts/185560/copy-that-a-jennifer-lawrence-hairstyle-for-every-day-of-the-week-1676154-1456538020.640x0c.jpg"
+    },
+    {
+        id: 6,
+        username: "eddieredmayne",
+        fullname: "Eddie Redmayne",
+        profileImageSmall: "https://s-media-cache-ak0.pinimg.com/originals/fa/3f/69/fa3f691d3fdc13ac0ccc707132730b66.jpg"
     }
+
+
 ]
 
 // Here is the database about username, password, profileImage, and name
@@ -209,6 +229,16 @@ app.post('/login', function(req,res){
     {
         return res.sendStatus(401);
     }
+});
+
+
+var searchUser = function() {
+    return otherUsers;
+}
+app.get('/search', function(req,res){
+   res.json(searchUser());
+
+    
 });
 
 app.get('/posts/relevant', function(req, res) {

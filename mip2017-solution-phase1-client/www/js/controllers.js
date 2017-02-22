@@ -42,7 +42,13 @@ angular.module('someklone.controllers', [])
     console.log($stateParams);
 })
 
-.controller('SearchCtrl', function($scope, $state, $ionicHistory, Users) {
+.controller('SearchCtrl', function($scope, $state, $ionicHistory, Users, $q) {
+
+    Users.searchUser().then(function(data){
+        $scope.otherUsers = data;
+    })
+
+    console.log($scope.otherUsers);
 
     $scope.input = {
         searchText: ""
@@ -85,6 +91,7 @@ angular.module('someklone.controllers', [])
 
     $scope.updateSearch = function()
     {
+        
         if($scope.tabs.people == true)
         {
             Users.searchUser($scope.input.searchText).then(function(result) {
@@ -222,7 +229,7 @@ angular.module('someklone.controllers', [])
 .controller('AccountCtrl', function($scope, Users, Posts, $q, $state, $ionicHistory) {
 
     $scope.userData = Users.getActiveUser();
-    console.log($scope.userData);
+    
 
     Posts.getUserPosts($scope.userData.id).then(function(results){
         $scope.posts = results;
