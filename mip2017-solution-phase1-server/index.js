@@ -55,16 +55,57 @@ var posts = [
                     tags: []
                 },
             ]
-
         },
         {
+            id: 1,
+            name: "post2",
+            user: {
+                id: 2,
+                username: "jamesmcavoy",
+                profileImageSmall: "https://s-media-cache-ak0.pinimg.com/originals/f3/15/01/f3150106e24a639559d74da095a70b1c.jpg"
+            },
+            image: "http://cdn.inquisitr.com/wp-content/uploads/2016/07/Split-M-Night-Shyamalan-James-McAvoy-900x440.jpg",
+            imageThumbnail: "http://cdn.inquisitr.com/wp-content/uploads/2016/07/Split-M-Night-Shyamalan-James-McAvoy-900x440.jpg",
+            likes: 10100,
+            caption: "Are you ready for Split? ",
+            userRefs: [],
+            tags: {name: "#Split"},
+            comments: []
+        },
+         {
             id: 2,
-            tags: { name: "#hehe"}
+            name: "post3",
+            user: {
+                id: 2,
+                username: "jenniferlawrence",
+                profileImageSmall: "http://cliqueimg.com/cache/posts/185560/copy-that-a-jennifer-lawrence-hairstyle-for-every-day-of-the-week-1676154-1456538020.640x0c.jpg"
+            },
+            image: "http://www.passengersmovie.com/share.jpg",
+            imageThumbnail: "http://www.passengersmovie.com/share.jpg",
+            likes: 7665,
+            caption: "Are you ready for Passenger ?",
+            userRefs: [],
+            tags: {name: "#passenger"},
+            comments: []
         },
         {
             id: 3,
-            tags: { name : "#bobo"}
+            name: "post4",
+            user: {
+                id: 2,
+                username: "eddieredmayne",
+                profileImageSmall: "https://s-media-cache-ak0.pinimg.com/originals/fa/3f/69/fa3f691d3fdc13ac0ccc707132730b66.jpg"
+            },
+            image: "https://i.ytimg.com/vi/ViuDsy7yb8M/maxresdefault.jpg",
+            imageThumbnail: "https://i.ytimg.com/vi/ViuDsy7yb8M/maxresdefault.jpg",
+            likes: 1029,
+            caption: "Let's come to magic world!!!",
+            userRefs: [],
+            tags: {name: "#magic"},
+            comments: []
         }
+
+    
     ]
 
 //Other users
@@ -122,7 +163,7 @@ app.post('/signup', function(req,res){
             username: req.body.username,
             name: req.body.name,
             password: req.body.password,
-            profileImageSmall: 0,
+            profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/facebook.gif",
             postCount: 0,
             followers: 0,
             following: 0,

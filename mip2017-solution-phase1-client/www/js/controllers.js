@@ -18,7 +18,13 @@ angular.module('someklone.controllers', [])
     }
 })
 
-.controller('BrowseCtrl', function($scope, $state) {
+.controller('BrowseCtrl', function($scope, $state, Posts, $q) {
+
+     Posts.following().then(function(data)
+        {
+            $scope.posts = data;
+        }
+    )
 
     $scope.activateSearch = function()
     {
