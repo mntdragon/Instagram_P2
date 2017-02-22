@@ -26,21 +26,6 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
             });
         },
         // search posts based on tags
-        searchTag: function()
-        {
-            return $q(function(resolve, reject){
-                resolve(posts);
-            });
-        },
-        // get all posts of single user
-        getUserPosts: function(userId)
-        {
-            return $q(function(resolve, reject){
-
-                // execute the search and return results
-                resolve(posts); // placeholder
-            });
-        },
         searchTag: function(tagname)
         {
           return $q(function(resolve, reject){
@@ -51,6 +36,15 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                   reject();
               });
           });
+        },
+        // get all posts of single user
+        getUserPosts: function(userId)
+        {
+            return $q(function(resolve, reject){
+
+                // execute the search and return results
+                resolve(posts); // placeholder
+            });
         },
         new: function(imageUri, caption)
         {
