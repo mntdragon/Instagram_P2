@@ -54,7 +54,7 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                     user: {
                         id: userData.id,
                         username: userData.name,
-                        profileImageSmall: "http://core0.staticworld.net/images/article/2015/11/111915blog-donald-trump-100629006-primary.idge.jpg"
+                        profileImageSmall: userData.profileImageSmall
                     },
                     image: imageUri,
                     imageThumbnail: imageUri, // no special thumbnail yet, but there will be when the image is eventually uploaded to server

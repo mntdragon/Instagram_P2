@@ -188,7 +188,8 @@ angular.module('someklone.controllers', [])
 
 })
 
-.controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts){
+.controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts, Users){
+    $scope.userData = Users.getActiveUser();
 
     // $scope.uploadPhoto = function()
     // {
@@ -231,6 +232,8 @@ angular.module('someklone.controllers', [])
             $state.go('tab.home');
         });
     };
+
+
 })
 
 .controller('ActivityCtrl', function($scope, Users, Posts) {
