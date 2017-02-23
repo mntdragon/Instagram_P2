@@ -52,8 +52,8 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                 var newPost = {
                     id: posts.length,
                     user: {
-                        id: 1,
-                        username: "dtrump",
+                        id: userData.id,
+                        username: userData.name,
                         profileImageSmall: "http://core0.staticworld.net/images/article/2015/11/111915blog-donald-trump-100629006-primary.idge.jpg"
                     },
                     image: imageUri,

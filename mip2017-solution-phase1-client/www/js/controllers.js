@@ -91,7 +91,7 @@ angular.module('someklone.controllers', [])
 
     $scope.updateSearch = function()
     {
-        
+
         if($scope.tabs.people == true)
         {
             Users.searchUser($scope.input.searchText).then(function(result) {
@@ -189,9 +189,29 @@ angular.module('someklone.controllers', [])
 })
 
 .controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts){
+
+    // $scope.uploadPhoto = function()
+    // {
+    //   var options = new FileUploadOptions()
+    //   options.fileKey = "image";
+    //
+    //   $cordovaFileTransfer.upload('http://image-upload-example-server.herokuapp.com/upload', $scope.picture, options).then(function(result) {
+    //       console.log("File upload complete");
+    //       console.log(result);
+    //       $scope.uploadResults = "Upload completed successfully"
+    //   }, function(err) {
+    //       console.log("File upload error");
+    //       console.log(err);
+    //       $scope.uploadResults = "Upload failed"
+    //   }, function (progress) {
+    //       // constant progress updates
+    //       console.log(progress);
+    //   });
+    // }
     $scope.post = {
         imageUri: $stateParams.imageUri,
-        caption: ""
+        caption: "",
+        tags: ""
     };
 
     $scope.goBack = function()
@@ -204,7 +224,7 @@ angular.module('someklone.controllers', [])
 
     $scope.sharePost = function()
     {
-        Posts.new($scope.post.imageUri, $scope.post.caption).then(function(){
+        Posts.new($scope.post.imageUri, $scope.post.caption, $scope.post.tags).then(function(){
             $ionicHistory.nextViewOptions({
                 disableBack: true
             });
@@ -229,7 +249,7 @@ angular.module('someklone.controllers', [])
 .controller('AccountCtrl', function($scope, Users, Posts, $q, $state, $ionicHistory) {
 
     $scope.userData = Users.getActiveUser();
-    
+
 
     Posts.getUserPosts($scope.userData.id).then(function(results){
         $scope.posts = results;
