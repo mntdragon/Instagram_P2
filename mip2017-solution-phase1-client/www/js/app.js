@@ -1,6 +1,6 @@
 
 angular.module('someklone.config', []).constant('appConfig', {
-        "apiAddr": "http://localhost:8200/"
+        "apiAddr": "https://instagram-mip.herokuapp.com/"
 });
 
 // Declare the services module
