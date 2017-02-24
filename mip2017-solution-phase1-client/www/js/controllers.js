@@ -196,24 +196,24 @@ angular.module('someklone.controllers', [])
 .controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts, Users){
     $scope.userData = Users.getActiveUser();
 
-    // $scope.uploadPhoto = function()
-    // {
-    //   var options = new FileUploadOptions()
-    //   options.fileKey = "image";
-    //
-    //   $cordovaFileTransfer.upload('http://image-upload-example-server.herokuapp.com/upload', $scope.picture, options).then(function(result) {
-    //       console.log("File upload complete");
-    //       console.log(result);
-    //       $scope.uploadResults = "Upload completed successfully"
-    //   }, function(err) {
-    //       console.log("File upload error");
-    //       console.log(err);
-    //       $scope.uploadResults = "Upload failed"
-    //   }, function (progress) {
-    //       // constant progress updates
-    //       console.log(progress);
-    //   });
-    // }
+    $scope.uploadPhoto = function()
+    {
+      var options = new FileUploadOptions()
+      options.fileKey = "image";
+
+      $cordovaFileTransfer.upload('https://instagram-mip.herokuapp.com/upload', $scope.imageData.picture, options).then(function(result) {
+          console.log("File upload complete");
+          console.log(result);
+          $scope.uploadResults = "Upload completed successfully"
+      }, function(err) {
+          console.log("File upload error");
+          console.log(err);
+          $scope.uploadResults = "Upload failed"
+      }, function (progress) {
+          // constant progress updates
+          console.log(progress);
+      });
+    }
     $scope.post = {
         imageUri: $stateParams.imageUri,
         caption: "",
