@@ -3,7 +3,7 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
 
     var posts = []; //new array
     var userData = Users.getActiveUser();
-    
+
 
 
     return {
@@ -38,8 +38,8 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                   reject();
               });
             });
-         
-        
+
+
         },
         // get all posts of single user
         getUserPosts: function(userId)
@@ -53,6 +53,12 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
         new: function(imageUri, caption)
         {
             return $q(function(resolve, reject) {
+              $http.post(appConfig.apiAddr + "upload", { image: imageUri }).then(function(response){
+
+                  resolve(posts);
+              },function(err){
+                  reject();
+              });
                 var newPost = {
                     id: posts.length,
                     user: {
