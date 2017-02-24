@@ -42,13 +42,16 @@ angular.module('someklone.controllers', [])
     console.log($stateParams);
 })
 
-.controller('SearchCtrl', function($scope, $state, $ionicHistory, Users, $q) {
+.controller('SearchCtrl', function($scope, $state, $ionicHistory, Users, $q, Posts) {
 
     Users.searchUser().then(function(data){
         $scope.otherUsers = data;
-    })
+    });
+    
+    Posts.searchTag().then(function(tagname){
+        $scope.posts = tagname;
+    });
 
-    console.log($scope.otherUsers);
 
     $scope.input = {
         searchText: ""
@@ -60,8 +63,8 @@ angular.module('someklone.controllers', [])
     };
 
     $scope.tabs = {
-        people: true,
-        tags: false
+        people: false,
+        tags: true
     };
 
     $scope.goBack = function()
@@ -98,9 +101,11 @@ angular.module('someklone.controllers', [])
                 $scope.searchResults.people = result;
             });
         }
-        else // search for posts with tags
+        else if($scope.tabs.tags == true)// search for posts with tags
         {
-
+             Posts.searchTag($scope.input.searchText).then(function(result) {
+                $scope.searchResults.tags = result;
+            });
         }
     };
 })

@@ -1,0 +1,59 @@
+table:
+
+User : name, id(unique) or followingUser[userId, userId] 
+*stored in the server
+
+User following users: userFollowing, userFollowed
+
+follow: take userId of that user, have your own id and send to server with http post, store in array
+
+POST(to add a new user to follow)
+new route: /users/:id/following/:targetUser
+
+GET(get all followed users)
+/users/:id/following
+
+GET(get all the user data, uncluding the followed user)
+/user/:id
+
+example: GET (get all the post from followed users)
+/users/:id/home
+for this user, get all post in home view
+
+unfollow: new route maybe or the same route if use HTTP delete to removw follower user
+
+!!no session being tracked, instead every http called show the userid and info
+
+can you current user in service to do these above.
+
+-----------------TAG-------------------------
+
+API route for server
+POST or GET to implement to server then show text be searched
+/users/search/name/:value  - /users/search/name/bonny ham (for complex, or simple bonnyham)
+{"value": "dsfsfsf"}
+
+-------
+serverCode
+
+var users= [{
+name:"mathew"],
+{name: "andrew"}]  -> compare if match the value of name
+
+
+--------
+in data storage
+Post of user at least:  - id
+	     		-caption
+	     		-image(use url in the heroku)
+	     		-or some other reference to user
+-----client <im ng-src="post.image>
+
+
+GET
+/users/:id/posts
+GET
+/posts/:id/user/:userId 
+
+
+
