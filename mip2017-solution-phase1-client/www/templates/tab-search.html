@@ -28,10 +28,14 @@
             </div>
         </div>
         <div ng-if="tabs.tags">
-            <div class="list">
-                <a class="item item-avatar" href="#" ng-repeat="p in searchResults.tags | filter: input.searchText">
-                <i></i><p>{{input.searchText}}</p><h2>Username: {{ p.user.username }}</h2>
-                <img src="{{ p.imageThumbnail }}" width="300" height="200">
+            <div class="card" ng-repeat="p in searchResults.tags | filter: input.searchText">
+                <a href="#">
+                    <div class="item item-avatar">
+                        <img src="{{ p.user.profileImageSmall }}"><h2>{{ p.user.username }}</h2>
+                    </div>
+                <div class="item item-image">
+                <img src="{{ p.imageThumbnail }}">
+                </div>
                 </a>
             </div>
         </div>

@@ -4,4 +4,7 @@
     <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
     <AndroidEmulatorID>AndroidDevice;Device</AndroidEmulatorID>
   </PropertyGroup>
+  <PropertyGroup>
+    <ReferenceCachePath>C:\Users\mrice\AppData\Local\Temp\virbgpwf_Phase2_refcache</ReferenceCachePath>
+  </PropertyGroup>
 </Project>

@@ -47,7 +47,7 @@ angular.module('someklone.controllers', [])
     Users.searchUser().then(function(data){
         $scope.otherUsers = data;
     });
-    
+
     Posts.searchTag().then(function(tagname){
         $scope.posts = tagname;
     });
@@ -196,24 +196,7 @@ angular.module('someklone.controllers', [])
 .controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts, Users){
     $scope.userData = Users.getActiveUser();
 
-    $scope.uploadPhoto = function()
-    {
-      var options = new FileUploadOptions()
-      options.fileKey = "image";
 
-      $cordovaFileTransfer.upload('https://instagram-mip.herokuapp.com/upload', $scope.imageData.picture, options).then(function(result) {
-          console.log("File upload complete");
-          console.log(result);
-          $scope.uploadResults = "Upload completed successfully"
-      }, function(err) {
-          console.log("File upload error");
-          console.log(err);
-          $scope.uploadResults = "Upload failed"
-      }, function (progress) {
-          // constant progress updates
-          console.log(progress);
-      });
-    }
     $scope.post = {
         imageUri: $stateParams.imageUri,
         caption: "",
@@ -230,6 +213,22 @@ angular.module('someklone.controllers', [])
 
     $scope.sharePost = function()
     {
+      var options = new FileUploadOptions()
+     options.fileKey = "image";
+
+     $cordovaFileTransfer.upload('https://instagram-mip.herokuapp.com/upload', $stateParams.imageUri, options).then(function(result) {
+         console.log("File upload complete");
+         console.log(result);
+         $scope.post.image = result;
+         $scope.uploadResults = "Upload completed successfully"
+     }, function(err) {
+         console.log("File upload error");
+         console.log(err);
+         $scope.uploadResults = "Upload failed"
+     }, function (progress) {
+         // constant progress updates
+         console.log(progress);
+     });
         Posts.new($scope.post.imageUri, $scope.post.caption, $scope.post.tags).then(function(){
             $ionicHistory.nextViewOptions({
                 disableBack: true
