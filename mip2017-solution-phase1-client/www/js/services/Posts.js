@@ -1,4 +1,3 @@
-
 angular.module('someklone.services').factory('Posts', function($q, $http, appConfig, Users) {
 
     var posts = []; //new array
@@ -52,7 +51,13 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
         },
         new: function(imageUri, caption)
         {
+            return $q(function(resolve, reject) {
+              $http.post(appConfig.apiAddr + "upload", { image: imageUri }).then(function(response){
 
+                  resolve(posts);
+              },function(err){
+                  reject();
+              });
                 var newPost = {
                     id: posts.length,
                     user: {
@@ -72,7 +77,7 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                 posts.unshift(newPost);
 
                 resolve();
-            
+            });
         },
         toggleLike: function(post)
         {

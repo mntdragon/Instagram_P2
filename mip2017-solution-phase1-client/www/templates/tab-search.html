@@ -2,7 +2,7 @@
     <ion-header-bar align-title="left" >
         <div class="buttons" >
             <button class="button button-icon ion-ios-arrow-back" ng-click="goBack()"></button>
-        </div>        
+        </div>
         <label class="item-input-wrapper">
           <input type="search" placeholder="Search" class="headerInput" ng-model="input.searchText" ng-change="updateSearch()">
         </label>
@@ -15,7 +15,7 @@
             </a>
             <a class="tab-item" ng-class="{active: tabs.tags == true }" ng-click="tabActivate('tags')">
                 Tags
-            </a>  
+            </a>
         </div>
         <div ng-if="tabs.people">
             <div class="list">
