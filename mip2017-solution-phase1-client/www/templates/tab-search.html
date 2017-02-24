@@ -29,10 +29,9 @@
         </div>
         <div ng-if="tabs.tags">
             <div class="list">
-                <a class="item item-avatar" href="#">
+                <a class="item item-avatar" href="#" ng-repeat="p in searchResults.tags | filter: input.searchText">
                 <i class="icon ion-pound"></i>
-                <h2>#tupac</h2>
-                <p>87,345 posts</p>
+                <img src="{{ p.image }}">
                 </a>
             </div>
         </div>

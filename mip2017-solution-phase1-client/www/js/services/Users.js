@@ -1,8 +1,9 @@
+
 angular.module('someklone.services').factory('Users', function($q, $http, appConfig, $state, $ionicPopup, $ionicHistory) {
 
 
 var activeUser = {};
-var otherUsers = {};
+var otherUsers = {}; //object
 
 
   return {
@@ -75,6 +76,7 @@ var otherUsers = {};
       });
     },
     searchUser: function(searchWord) {
+        
            return $q(function(resolve, reject){
                 $http.get(appConfig.apiAddr + "search").then(function(response){
                     otherUsers = response.data;

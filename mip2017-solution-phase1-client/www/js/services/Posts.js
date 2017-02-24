@@ -1,8 +1,9 @@
 
 angular.module('someklone.services').factory('Posts', function($q, $http, appConfig, Users) {
 
-    var posts = [];
+    var posts = []; //new array
     var userData = Users.getActiveUser();
+    
 
 
     return {
@@ -29,13 +30,16 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
         searchTag: function(tagname)
         {
           return $q(function(resolve, reject){
-              $http.post(appConfig.apiAddr + "posts/tag", { name: '#'+tagname }).then(function(response){
-
+              $http.post(appConfig.apiAddr + "posts/tag", { tags: tagname}).then(function(response){
+                posts = response.data;
+                console.log(posts);
                   resolve(posts);
               },function(err){
                   reject();
               });
-          });
+            });
+         
+        
         },
         // get all posts of single user
         getUserPosts: function(userId)
