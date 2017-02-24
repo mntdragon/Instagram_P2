@@ -30,8 +30,8 @@
         <div ng-if="tabs.tags">
             <div class="list">
                 <a class="item item-avatar" href="#" ng-repeat="p in searchResults.tags | filter: input.searchText">
-                <i class="icon ion-pound"></i>
-                <img src="{{ p.image }}">
+                <i></i><p>{{input.searchText}}</p><h2>Username: {{ p.user.username }}</h2>
+                <img src="{{ p.imageThumbnail }}" width="300" height="200">
                 </a>
             </div>
         </div>
