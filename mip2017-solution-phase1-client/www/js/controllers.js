@@ -191,11 +191,6 @@ angular.module('someklone.controllers', [])
 
     $scope.gallery(); // execute gallery when the controller is run first time
 
-})
-
-.controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts, Users){
-    $scope.userData = Users.getActiveUser();
-
     $scope.uploadPhoto = function()
     {
       var options = new FileUploadOptions()
@@ -204,20 +199,25 @@ angular.module('someklone.controllers', [])
       $cordovaFileTransfer.upload('https://instagram-mip.herokuapp.com/upload', $scope.imageData.picture, options).then(function(result) {
           console.log("File upload complete");
           console.log(result);
-          $scope.uploadResults = "Upload completed successfully"
+          $scope.uploadResults = "Upload completed successfully";
       }, function(err) {
           console.log("File upload error");
           console.log(err);
-          $scope.uploadResults = "Upload failed"
+          $scope.uploadResults = "Upload failed";
       }, function (progress) {
           // constant progress updates
           console.log(progress);
       });
     }
+
+})
+
+.controller('PostConfirmCtrl', function($scope, $state, $stateParams, $ionicHistory, Posts, Users){
+    $scope.userData = Users.getActiveUser();
     $scope.post = {
         imageUri: $stateParams.imageUri,
         caption: "",
-        tags: ""
+        tags: []
     };
 
     $scope.goBack = function()
@@ -230,6 +230,22 @@ angular.module('someklone.controllers', [])
 
     $scope.sharePost = function()
     {
+
+      //  var options = new FileUploadOptions()
+      //  options.fileKey = "imageUri";
+       //0
+      //  $cordovaFileTransfer.upload('https://instagram-mip.herokuapp.com/upload', $stateParams.imageUri, options).then(function(result) {
+      //     console.log("File upload complete");
+      //     console.log(result);
+      //     $scope.uploadResults = "Upload completed successfully";
+      //  }, function(err) {
+      //     console.log("File upload error");
+      //     console.log(err);
+      //     $scope.uploadResults = "Upload failed";
+      //  }, function (progress) {
+      //     // constant progress updates
+      //     console.log(progress);
+      //  });
         Posts.new($scope.post.imageUri, $scope.post.caption, $scope.post.tags).then(function(){
             $ionicHistory.nextViewOptions({
                 disableBack: true

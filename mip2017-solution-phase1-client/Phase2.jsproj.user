@@ -5,6 +5,6 @@
     <AndroidEmulatorID>AndroidDevice;Device</AndroidEmulatorID>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferenceCachePath>C:\Users\mrice\AppData\Local\Temp\virbgpwf_Phase2_refcache</ReferenceCachePath>
+    <ReferenceCachePath>C:\Users\Thang Ho Minh\AppData\Local\Temp\Phase2_refcache</ReferenceCachePath>
   </PropertyGroup>
 </Project>

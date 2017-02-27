@@ -49,36 +49,36 @@ angular.module('someklone.services').factory('Posts', function($q, $http, appCon
                 resolve(posts); // placeholder
             });
         },
-        new: function(imageUri, caption)
+        new: function(imageUri, caption, tags)
         {
-            return $q(function(resolve, reject) {
-              $http.post(appConfig.apiAddr + "upload", { image: imageUri }).then(function(response){
+           return $q(function(resolve, reject) {
+             $http.post(appConfig.apiAddr + "upload", { image: imageUri }).then(function(response){
 
-                  resolve(posts);
-              },function(err){
-                  reject();
-              });
-                var newPost = {
-                    id: posts.length,
-                    user: {
-                        id: userData.id,
-                        username: userData.name,
-                        profileImageSmall: userData.profileImageSmall
-                    },
-                    image: imageUri,
-                    imageThumbnail: imageUri, // no special thumbnail yet, but there will be when the image is eventually uploaded to server
-                    likes: 0,
-                    userLike: false,
-                    caption: caption,
-                    tags: [],  // tag identification logic not yet implemented
-                    comments: []
-                };
+                 resolve(posts);
+             },function(err){
+                 reject();
+             });
+               var newPost = {
+                   id: posts.length,
+                   user: {
+                       id: userData.id,
+                       username: userData.name,
+                       profileImageSmall: userData.profileImageSmall
+                   },
+                   image: imageUri,
+                   imageThumbnail: imageUri, // no special thumbnail yet, but there will be when the image is eventually uploaded to server
+                   likes: 0,
+                   userLike: false,
+                   caption: caption,
+                   tags: tags,  // tag identification logic not yet implemented
+                   comments: []
+               };
 
-                posts.unshift(newPost);
+               posts.unshift(newPost);
 
-                resolve();
-            });
-        },
+               resolve();
+           });
+       },
         toggleLike: function(post)
         {
             if(post.userLike)

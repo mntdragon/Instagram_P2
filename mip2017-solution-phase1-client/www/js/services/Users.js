@@ -21,7 +21,7 @@ var otherUsers = {}; //object
                            following: result.data.following,
                            activity: result.data.activity
                           };
-            
+
             resolve();
           }
           else
@@ -39,7 +39,7 @@ var otherUsers = {}; //object
           if(result.status == 200)
           {
             resolve();
-            
+
           }
           else
           {
@@ -76,7 +76,7 @@ var otherUsers = {}; //object
       });
     },
     searchUser: function(searchWord) {
-        
+
            return $q(function(resolve, reject){
                 $http.get(appConfig.apiAddr + "search").then(function(response){
                     otherUsers = response.data;
@@ -84,6 +84,15 @@ var otherUsers = {}; //object
                 },function(err){
                     reject();
                 });
+            return $q(function(resolve, reject){
+                    $http.post(appConfig.apiAddr + "search", { username: username}).then(function(response){
+                      posts = response.data;
+                      console.log(posts);
+                        resolve(posts);
+                    },function(err){
+                        reject();
+                    });
+                  });
             });
             var upperCaseSearchWord = searchWord.toUpperCase();
             return $q(function(resolve, reject){
