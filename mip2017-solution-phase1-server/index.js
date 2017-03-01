@@ -160,9 +160,9 @@ var activeUsers = [
         password: "123456",
         name: "Jason Statham",
         profileImageSmall: "http://www.students.oamk.fi/~t5homi00/images/jason.jpg",
-        postCount: 13,
-        followers: 55,
-        following: 23,
+        postCount: 1,
+        followers: 0,
+        following: 0,
         activity: []
     }
 ];

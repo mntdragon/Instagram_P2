@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="imageHolder">
-            <div class="imageFrameThree" ng-repeat="p in posts | orderBy:'-user.id'">
+            <div class="imageFrameThree" ng-repeat="p in posts | limitTo: 1">
                 <img ng-src="{{ p.imageThumbnail }}">
             </div>
         </div>
