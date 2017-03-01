@@ -17,14 +17,12 @@
     <div class="buttons">
 
         <button class="button" ng-click="uploadPhoto()" ng-if="imageData.picture">Upload</button>
-        <div> Upload result: </div>
-
-        <div> {{ uploadResults }} </div>
+        
     </div>
     <div>
         <label class="item item-input">
             <input type="text" placeholder="Write a caption..." ng-model="post.caption"></input>
-            <input type="text" placeholder="Put tags here" ng-model="post.tags"></input>
+
         </label>
     </div>
 </ion-content>

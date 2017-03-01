@@ -25,8 +25,8 @@
             </div>
         </div>
         <div class="imageHolder">
-            <div class="imageFrameThree" ng-repeat="p in posts">
-                <img ng-src="{{ p.imageThumbnail }}" ng-click="browseDetail(p.id)">
+            <div class="imageFrameThree" ng-repeat="p in posts | orderBy:'-user.id'">
+                <img ng-src="{{ p.imageThumbnail }}">
             </div>
         </div>
         <a class="button button-block button-assertive" href = "#/login">
